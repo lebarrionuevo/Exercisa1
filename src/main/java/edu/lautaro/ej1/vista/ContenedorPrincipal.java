@@ -36,8 +36,7 @@ public class ContenedorPrincipal extends BorderPane {
         //this.setConsola();
 
         this.setBotonera(tablero);
-        this.setEspacioParaVerAlgoritmo();
-        this.setEspacioParaEstadoLapiz();
+        this.setEspacioParaAgregarTarea(tablero);
 
         this.stage = stage;
     }
@@ -49,6 +48,7 @@ public class ContenedorPrincipal extends BorderPane {
         Button botonAgregarTarea = new Button();
         botonAgregarTarea.setStyle("-fx-background-color: #e129e5; ");
         botonAgregarTarea.setText("Add Task");
+        botonAgregarTarea.setTextFill(Color.GREEN);
         BotonAgregarTareaHandler AgregarTareaHandler = new BotonAgregarTareaHandler(this, tablero);
         botonAgregarTarea.setOnAction(AgregarTareaHandler);
         botonAgregarTarea.setTranslateX(20);
@@ -64,28 +64,28 @@ public class ContenedorPrincipal extends BorderPane {
     }
 
 
-    private void setEspacioParaVerAlgoritmo(){
+    private void setEspacioParaAgregarTarea(Tablero tablero){
 
         Label etiqueta = new Label();
-        etiqueta.setText(" Algoritmo ");
+        etiqueta.setText(" Tareas ");
         etiqueta.setFont(Font.font("courier new", FontWeight.SEMI_BOLD, 22));
         etiqueta.setTextFill(Color.GREEN);
-        VBox contenedorVertical = new VBox(etiqueta);
-        contenedorVertical.setSpacing(1);
-        contenedorVertical.setPadding(new Insets(15));
+        VBox contenedorCentral = new VBox(etiqueta);
+        contenedorCentral.setSpacing(1);
+        contenedorCentral.setPadding(new Insets(15));
 
-        this.contenedorVerticalDerecho = contenedorVertical;
-        this.setRight(contenedorVerticalDerecho);
+        this.contenedorCentral = contenedorCentral;
+        this.setCenter(contenedorCentral);
 
-    }
 
-    private void setEspacioParaEstadoLapiz(){
+        Button botonAgregarTarea = new Button();
+        botonAgregarTarea.setText("Add Task");
+        botonAgregarTarea.setFont(Font.font("courier new", FontWeight.SEMI_BOLD, 18));
+        botonAgregarTarea.setTextFill(Color.GREEN);
+        BotonAgregarTareaHandler AgregarTareaHandler = new BotonAgregarTareaHandler(this, tablero);
+        botonAgregarTarea.setOnAction(AgregarTareaHandler);
 
-        Label etiqueta = new Label();
-        etiqueta.setText("ESTADO LAPIZ: Arriba");
-        etiqueta.setFont(Font.font("courier new", FontWeight.SEMI_BOLD, 18));
-        etiqueta.setTextFill(Color.RED);
-        VBox contenedorInferior = new VBox(etiqueta);
+        VBox contenedorInferior = new VBox(botonAgregarTarea);
         contenedorInferior.setSpacing(1);
         contenedorInferior.setPadding(new Insets(15));
 
@@ -95,17 +95,17 @@ public class ContenedorPrincipal extends BorderPane {
     }
 
 
-    public void agregarElementosAEjecutar(Label label){
-        this.contenedorVerticalDerecho.getChildren().add(label);
+    public void agregarTareas(Label label){
+        this.contenedorCentral.getChildren().add(label);
     }
 
-    public void reiniciarElementosAEjecutar() {
-        this.contenedorVerticalDerecho.getChildren().clear();
+    public void reiniciartareas() {
+        this.contenedorCentral.getChildren().clear();
         Label etiqueta = new Label();
         etiqueta.setText(" Algoritmo ");
         etiqueta.setFont(Font.font("courier new", FontWeight.SEMI_BOLD, 22));
         etiqueta.setTextFill(Color.GREEN);
-        this.agregarElementosAEjecutar(etiqueta);
+        this.agregarTareas(etiqueta);
     }
 
 }
