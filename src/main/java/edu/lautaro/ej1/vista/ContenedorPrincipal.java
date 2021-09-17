@@ -24,19 +24,17 @@ import java.util.Optional;
 public class ContenedorPrincipal extends BorderPane {
 
     VBox contenedorVerticalDerecho;
-    Canvas canvasCentral;
     VBox contenedorCentral;
     VBox contenedorInferiorCentral;
-    //Canvas dibujoDelPersonaje;
     Stage stage;
 
-    public ContenedorPrincipal(Stage stage, Tablero tablero) throws FileNotFoundException {
+    public ContenedorPrincipal(Stage stage) throws FileNotFoundException {
 
         //this.setCentro(tablero);
         //this.setConsola();
 
         //this.setBotonera(tablero);
-        this.setEspacioParaAgregarTarea(tablero);
+        this.setEspacioParaAgregarTarea();
 
         this.stage = stage;
     }
@@ -80,48 +78,24 @@ public class ContenedorPrincipal extends BorderPane {
     }*/
 
 
-    private void setEspacioParaAgregarTarea(Tablero tablero){
+    private void setEspacioParaAgregarTarea(){
 
-
-        // create a tile pane
-        TilePane r = new TilePane();
-        Label l = new Label("This is a check box");
-        String st[] = { "Arnab", "Andrew", "Ankit" };
-
-        // add label
-        r.getChildren().add(l);
-
-        for (int i = 0; i < st.length; i++) {
-
-            // create a checkbox
-            CheckBox c = new CheckBox(st[i]);
-
-            // add label
-            r.getChildren().add(c);
-
-            // set IndeterMinate
-            c.setIndeterminate(true);
-        }
-
-
-        /*Label etiqueta = new Label();
-        etiqueta.setText(" Tareas ");
+        Label etiqueta = new Label();
+        etiqueta.setText(" List of tasks ");
         etiqueta.setFont(Font.font("courier new", FontWeight.SEMI_BOLD, 22));
-        etiqueta.setTextFill(Color.GREEN);*/
-        VBox contenedorCentral = new VBox();
+        etiqueta.setTextFill(Color.GREEN);
+        VBox contenedorCentral = new VBox(etiqueta);
         contenedorCentral.setSpacing(1);
         contenedorCentral.setPadding(new Insets(15));
 
         this.contenedorCentral = contenedorCentral;
         this.setCenter(contenedorCentral);
-        this.contenedorCentral.getChildren().add(r);
 
-
-        /*Button botonAgregarTarea = new Button();
+        Button botonAgregarTarea = new Button();
         botonAgregarTarea.setText("Add Task");
         botonAgregarTarea.setFont(Font.font("courier new", FontWeight.SEMI_BOLD, 18));
         botonAgregarTarea.setTextFill(Color.GREEN);
-        BotonAgregarTareaHandler AgregarTareaHandler = new BotonAgregarTareaHandler(this, tablero);
+        BotonAgregarTareaHandler AgregarTareaHandler = new BotonAgregarTareaHandler(this);
         botonAgregarTarea.setOnAction(AgregarTareaHandler);
 
         VBox contenedorInferior = new VBox(botonAgregarTarea);
@@ -129,22 +103,29 @@ public class ContenedorPrincipal extends BorderPane {
         contenedorInferior.setPadding(new Insets(15));
 
         this.contenedorInferiorCentral = contenedorInferior;
-        this.setBottom(contenedorInferiorCentral);*/
+        this.setBottom(contenedorInferiorCentral);
 
     }
 
 
-    public void agregarTareas(Label label){
-        this.contenedorCentral.getChildren().add(label);
+    public void agregarTareas(String tarea){
+
+        // create a checkbox
+        CheckBox c = new CheckBox(tarea);
+
+        // set IndeterMinate
+        c.setIndeterminate(true);
+
+        this.contenedorCentral.getChildren().add(c);
     }
 
-    public void reiniciartareas() {
+    /*public void reiniciartareas() {
         this.contenedorCentral.getChildren().clear();
         Label etiqueta = new Label();
         etiqueta.setText(" Algoritmo ");
         etiqueta.setFont(Font.font("courier new", FontWeight.SEMI_BOLD, 22));
         etiqueta.setTextFill(Color.GREEN);
         this.agregarTareas(etiqueta);
-    }
+    }*/
 
 }

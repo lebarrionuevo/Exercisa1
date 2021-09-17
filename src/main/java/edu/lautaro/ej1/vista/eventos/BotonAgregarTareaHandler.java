@@ -13,11 +13,9 @@ import java.util.Optional;
 public class BotonAgregarTareaHandler implements EventHandler<ActionEvent> {
 
     ContenedorPrincipal vista;
-    Tablero tablero;
 
-    public BotonAgregarTareaHandler(ContenedorPrincipal contenedorPrincipal, Tablero tablero) {
+    public BotonAgregarTareaHandler(ContenedorPrincipal contenedorPrincipal) {
         this.vista = contenedorPrincipal;
-        this.tablero = tablero;
     }
 
     @Override
@@ -28,9 +26,9 @@ public class BotonAgregarTareaHandler implements EventHandler<ActionEvent> {
         dialog.setContentText("Please write your task: ");
         Optional<String> resultado = dialog.showAndWait();
         if (resultado.isPresent()){
-            Label tarea = new Label();
-            tarea.setText((resultado.get()));
-            vista.agregarTareas(tarea);
+            String nuevaTarea;
+            nuevaTarea = resultado.get();
+            vista.agregarTareas(nuevaTarea);
         }
     }
 }
