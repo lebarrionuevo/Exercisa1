@@ -36,7 +36,7 @@ public class ContenedorBienvenida extends VBox {
         Label etiqueta = new Label();
         etiqueta.setFont(Font.font("Tahoma", FontWeight.BOLD, 24));
 
-        etiqueta.setText("Bienvenidos a la aplicación de tareas. Haga click en entrar");
+        etiqueta.setText("Welcome to the task app. Click enter");
         etiqueta.setTextFill(Color.web("#66A7C5"));
 
         BotonEntrarEventHandler botonEntrarHandler = new BotonEntrarEventHandler(stage, proximaEscena);
