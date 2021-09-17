@@ -105,7 +105,14 @@ public class ContenedorPrincipal extends BorderPane {
         BotonEditarTareasHandler EditarTareasHandler = new BotonEditarTareasHandler(this, tablero);
         botonEditarTareas.setOnAction(EditarTareasHandler);
 
-        VBox contenedorInferior = new VBox(botonAgregarTarea, botonEditarTareas);
+        Button botonEliminarTareas = new Button();
+        botonEliminarTareas.setText("Delete Tasks");
+        botonEliminarTareas.setFont(Font.font("courier new", FontWeight.SEMI_BOLD, 18));
+        botonEliminarTareas.setTextFill(Color.GREEN);
+        BotonEliminarTareasHandler EliminarTareasHandler = new BotonEliminarTareasHandler(this, tablero);
+        botonEliminarTareas.setOnAction(EliminarTareasHandler);
+
+        VBox contenedorInferior = new VBox(botonAgregarTarea, botonEditarTareas, botonEliminarTareas);
         contenedorInferior.setSpacing(1);
         contenedorInferior.setPadding(new Insets(15));
 
@@ -126,13 +133,29 @@ public class ContenedorPrincipal extends BorderPane {
         this.contenedorCentral.getChildren().add(c);
     }
 
-    /*public void reiniciartareas() {
+    public void reiniciarListaDeTareas() {
         this.contenedorCentral.getChildren().clear();
         Label etiqueta = new Label();
-        etiqueta.setText(" Algoritmo ");
+        etiqueta.setText(" List of tasks ");
         etiqueta.setFont(Font.font("courier new", FontWeight.SEMI_BOLD, 22));
         etiqueta.setTextFill(Color.GREEN);
-        this.agregarTareas(etiqueta);
-    }*/
+        VBox contenedorCentral = new VBox(etiqueta);
+        contenedorCentral.setSpacing(1);
+        contenedorCentral.setPadding(new Insets(15));
+
+        this.contenedorCentral = contenedorCentral;
+        this.setCenter(contenedorCentral);
+        this.renovarTareas();
+    }
+
+    public void renovarTareas(){
+
+        for (int i = 0; i < tablero.obtenerTareas().size() ; i++) {
+
+            // create a checkbox
+            this.agregarTareas(tablero.obtenerTareas().get(i));
+
+        }
+    }
 
 }

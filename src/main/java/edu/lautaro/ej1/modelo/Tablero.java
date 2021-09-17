@@ -11,4 +11,22 @@ public class Tablero {
     public void agregarTarea(String nuevaTarea) {
         tareasDisponibles.add(nuevaTarea);
     }
+
+    public void quitarTarea(String antiguaTarea) {
+        if(tareasDisponibles.contains(antiguaTarea)){
+            tareasDisponibles.remove(antiguaTarea);
+        }
+    }
+
+    public ArrayList<String> obtenerTareas() {
+        return tareasDisponibles;
+    }
+
+    public void editarTareaExistente(String tareaEditable, String tareaEditada) {
+        if(tareasDisponibles.contains(tareaEditable)) {
+            int posicionAModificar;
+            posicionAModificar = tareasDisponibles.indexOf(tareaEditable);
+            tareasDisponibles.set(posicionAModificar, tareaEditada);
+        }
+    }
 }

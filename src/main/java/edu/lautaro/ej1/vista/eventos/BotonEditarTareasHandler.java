@@ -4,6 +4,7 @@ import edu.lautaro.ej1.modelo.Tablero;
 import edu.lautaro.ej1.vista.ContenedorPrincipal;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.control.ChoiceDialog;
 import javafx.scene.control.TextInputDialog;
 
 import java.util.Optional;
@@ -20,16 +21,30 @@ public class BotonEditarTareasHandler implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent actionEvent) {
-        TextInputDialog dialog = new TextInputDialog();
-        dialog.setTitle("Add new Task");
-        dialog.setHeaderText("Add a new task for your list");
-        dialog.setContentText("Please write your task: ");
-        Optional<String> resultado = dialog.showAndWait();
-        if (resultado.isPresent()){
-            String nuevaTarea;
-            nuevaTarea = resultado.get();
-            vista.agregarTareas(nuevaTarea);
-            tablero.agregarTarea(nuevaTarea);
+
+
+        ChoiceDialog<String> choiceDialog = new ChoiceDialog<>(" ", tablero.obtenerTareas());
+        choiceDialog.setHeaderText("Select the task to edit");
+        choiceDialog.setContentText("Choose your task:");
+
+        // Traditional way to get the response value.
+        Optional<String> resultado = choiceDialog.showAndWait();
+        if (resultado.isPresent()) {
+            String tareaAModificar;
+            tareaAModificar = resultado.get();
+            TextInputDialog dialog = new TextInputDialog();
+            dialog.setTitle("");
+            dialog.setHeaderText("Editing Task '" + tareaAModificar + "'");
+            dialog.setContentText("Please rewrite the task: ");
+            Optional<String> task = dialog.showAndWait();
+            if (task.isPresent()) {
+                String nuevaTarea;
+                nuevaTarea = task.get();
+                tablero.editarTareaExistente(tareaAModificar, nuevaTarea);
+            }
         }
+        vista.reiniciarListaDeTareas();
     }
 }
+
+
