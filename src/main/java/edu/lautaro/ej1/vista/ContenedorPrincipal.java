@@ -26,16 +26,16 @@ public class ContenedorPrincipal extends BorderPane {
     VBox contenedorVerticalDerecho;
     VBox contenedorCentral;
     VBox contenedorInferiorCentral;
+    Tablero tablero;
     Stage stage;
 
-    public ContenedorPrincipal(Stage stage) throws FileNotFoundException {
+    public ContenedorPrincipal(Stage stage, Tablero tablero) throws FileNotFoundException {
 
         //this.setCentro(tablero);
         //this.setConsola();
-
+        this.tablero = tablero;
         //this.setBotonera(tablero);
-        this.setEspacioParaAgregarTarea();
-
+        this.setEspacioParaAdministrarTareas();
         this.stage = stage;
     }
 
@@ -78,7 +78,7 @@ public class ContenedorPrincipal extends BorderPane {
     }*/
 
 
-    private void setEspacioParaAgregarTarea(){
+    private void setEspacioParaAdministrarTareas(){
 
         Label etiqueta = new Label();
         etiqueta.setText(" List of tasks ");
@@ -95,10 +95,17 @@ public class ContenedorPrincipal extends BorderPane {
         botonAgregarTarea.setText("Add Task");
         botonAgregarTarea.setFont(Font.font("courier new", FontWeight.SEMI_BOLD, 18));
         botonAgregarTarea.setTextFill(Color.GREEN);
-        BotonAgregarTareaHandler AgregarTareaHandler = new BotonAgregarTareaHandler(this);
+        BotonAgregarTareaHandler AgregarTareaHandler = new BotonAgregarTareaHandler(this, tablero);
         botonAgregarTarea.setOnAction(AgregarTareaHandler);
 
-        VBox contenedorInferior = new VBox(botonAgregarTarea);
+        Button botonEditarTareas = new Button();
+        botonEditarTareas.setText("Edit Tasks");
+        botonEditarTareas.setFont(Font.font("courier new", FontWeight.SEMI_BOLD, 18));
+        botonEditarTareas.setTextFill(Color.GREEN);
+        BotonEditarTareasHandler EditarTareasHandler = new BotonEditarTareasHandler(this, tablero);
+        botonEditarTareas.setOnAction(EditarTareasHandler);
+
+        VBox contenedorInferior = new VBox(botonAgregarTarea, botonEditarTareas);
         contenedorInferior.setSpacing(1);
         contenedorInferior.setPadding(new Insets(15));
 

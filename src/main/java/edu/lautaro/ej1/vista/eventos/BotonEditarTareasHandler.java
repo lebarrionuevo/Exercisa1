@@ -4,18 +4,16 @@ import edu.lautaro.ej1.modelo.Tablero;
 import edu.lautaro.ej1.vista.ContenedorPrincipal;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextInputDialog;
 
 import java.util.Optional;
 
-public class BotonAgregarTareaHandler implements EventHandler<ActionEvent> {
+public class BotonEditarTareasHandler implements EventHandler<ActionEvent> {
 
     ContenedorPrincipal vista;
     Tablero tablero;
 
-    public BotonAgregarTareaHandler(ContenedorPrincipal contenedorPrincipal, Tablero tablero) {
+    public BotonEditarTareasHandler(ContenedorPrincipal contenedorPrincipal, Tablero tablero) {
         this.vista = contenedorPrincipal;
         this.tablero = tablero;
     }
@@ -35,4 +33,3 @@ public class BotonAgregarTareaHandler implements EventHandler<ActionEvent> {
         }
     }
 }
-

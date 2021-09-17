@@ -20,7 +20,9 @@ public class App extends Application {
 
         stage.setTitle("Tasks To-do");
 
-        ContenedorPrincipal contenedorPrincipal = new ContenedorPrincipal(stage);
+        Tablero tablero = crearModelo();
+
+        ContenedorPrincipal contenedorPrincipal = new ContenedorPrincipal(stage, tablero);
         Scene escenaJuego = new Scene(contenedorPrincipal, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE);
 
         ContenedorBienvenida contenedorBienvenidos = new ContenedorBienvenida(stage, escenaJuego);
@@ -32,6 +34,11 @@ public class App extends Application {
         stage.show();
     }
 
+    private Tablero crearModelo() {
+        //Terreno terreno = new Terreno(460,250);
+        Tablero tablero = new Tablero();
+        return tablero;
+    }
 
     public static void main(String[] args) {
         launch();

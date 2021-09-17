@@ -6,5 +6,9 @@ import java.util.OptionalInt;
 
 public class Tablero {
 
+    protected ArrayList<String> tareasDisponibles = new ArrayList<>();
 
+    public void agregarTarea(String nuevaTarea) {
+        tareasDisponibles.add(nuevaTarea);
+    }
 }
