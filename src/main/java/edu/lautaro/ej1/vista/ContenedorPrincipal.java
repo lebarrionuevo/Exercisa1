@@ -35,14 +35,14 @@ public class ContenedorPrincipal extends BorderPane {
         //this.setCentro(tablero);
         //this.setConsola();
 
-        this.setBotonera(tablero);
+        //this.setBotonera(tablero);
         this.setEspacioParaAgregarTarea(tablero);
 
         this.stage = stage;
     }
 
 
-    private void setBotonera(Tablero tablero) throws FileNotFoundException {
+    /*private void setBotonera(Tablero tablero) throws FileNotFoundException {
 
 
         Button botonAgregarTarea = new Button();
@@ -59,26 +59,65 @@ public class ContenedorPrincipal extends BorderPane {
         contenedorVertical.setSpacing(10);
         contenedorVertical.setPadding(new Insets(15));
 
+
         contenedorVertical.setPrefWidth(285);
         this.setLeft(contenedorVertical);
     }
 
+    private void setCentro(Tablero tablero){
+        Label etiqueta = new Label();
+        etiqueta.setText(" TAREAS ");
+        etiqueta.setFont(Font.font("courier new", FontWeight.SEMI_BOLD, 22));
+        etiqueta.setTextFill(Color.GREEN);
+        VBox contenedorVerticalDerecho = new VBox(etiqueta);
+        contenedorVerticalDerecho.setSpacing(1);
+        contenedorVerticalDerecho.setPadding(new Insets(15));
+        this.contenedorVerticalDerecho = contenedorVerticalDerecho;
+        this.setLeft(contenedorVerticalDerecho);
+        CheckBox chkOne, chkTwo, chkThree;
+        chkOne = new CheckBox("One");
+        this.contenedorVerticalDerecho.getChildren().add(chkOne);
+    }*/
+
 
     private void setEspacioParaAgregarTarea(Tablero tablero){
 
-        Label etiqueta = new Label();
+
+        // create a tile pane
+        TilePane r = new TilePane();
+        Label l = new Label("This is a check box");
+        String st[] = { "Arnab", "Andrew", "Ankit" };
+
+        // add label
+        r.getChildren().add(l);
+
+        for (int i = 0; i < st.length; i++) {
+
+            // create a checkbox
+            CheckBox c = new CheckBox(st[i]);
+
+            // add label
+            r.getChildren().add(c);
+
+            // set IndeterMinate
+            c.setIndeterminate(true);
+        }
+
+
+        /*Label etiqueta = new Label();
         etiqueta.setText(" Tareas ");
         etiqueta.setFont(Font.font("courier new", FontWeight.SEMI_BOLD, 22));
-        etiqueta.setTextFill(Color.GREEN);
-        VBox contenedorCentral = new VBox(etiqueta);
+        etiqueta.setTextFill(Color.GREEN);*/
+        VBox contenedorCentral = new VBox();
         contenedorCentral.setSpacing(1);
         contenedorCentral.setPadding(new Insets(15));
 
         this.contenedorCentral = contenedorCentral;
         this.setCenter(contenedorCentral);
+        this.contenedorCentral.getChildren().add(r);
 
 
-        Button botonAgregarTarea = new Button();
+        /*Button botonAgregarTarea = new Button();
         botonAgregarTarea.setText("Add Task");
         botonAgregarTarea.setFont(Font.font("courier new", FontWeight.SEMI_BOLD, 18));
         botonAgregarTarea.setTextFill(Color.GREEN);
@@ -90,7 +129,7 @@ public class ContenedorPrincipal extends BorderPane {
         contenedorInferior.setPadding(new Insets(15));
 
         this.contenedorInferiorCentral = contenedorInferior;
-        this.setBottom(contenedorInferiorCentral);
+        this.setBottom(contenedorInferiorCentral);*/
 
     }
 
