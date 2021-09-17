@@ -3,27 +3,17 @@ package edu.lautaro.ej1.vista;
 import edu.lautaro.ej1.modelo.Tablero;
 import edu.lautaro.ej1.vista.eventos.*;
 import javafx.geometry.Insets;
-import javafx.geometry.Orientation;
-import javafx.geometry.Pos;
-import javafx.scene.Scene;
-import javafx.scene.canvas.Canvas;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.util.Optional;
 
 public class ContenedorPrincipal extends BorderPane {
 
-    VBox contenedorVerticalDerecho;
     VBox contenedorCentral;
     VBox contenedorInferiorCentral;
     Tablero tablero;
@@ -31,51 +21,10 @@ public class ContenedorPrincipal extends BorderPane {
 
     public ContenedorPrincipal(Stage stage, Tablero tablero) throws FileNotFoundException {
 
-        //this.setCentro(tablero);
-        //this.setConsola();
         this.tablero = tablero;
-        //this.setBotonera(tablero);
         this.setEspacioParaAdministrarTareas();
         this.stage = stage;
     }
-
-
-    /*private void setBotonera(Tablero tablero) throws FileNotFoundException {
-
-
-        Button botonAgregarTarea = new Button();
-        botonAgregarTarea.setStyle("-fx-background-color: #e129e5; ");
-        botonAgregarTarea.setText("Add Task");
-        botonAgregarTarea.setTextFill(Color.GREEN);
-        BotonAgregarTareaHandler AgregarTareaHandler = new BotonAgregarTareaHandler(this, tablero);
-        botonAgregarTarea.setOnAction(AgregarTareaHandler);
-        botonAgregarTarea.setTranslateX(20);
-        botonAgregarTarea.setTranslateY(-168);
-
-
-        VBox contenedorVertical = new VBox(botonAgregarTarea);
-        contenedorVertical.setSpacing(10);
-        contenedorVertical.setPadding(new Insets(15));
-
-
-        contenedorVertical.setPrefWidth(285);
-        this.setLeft(contenedorVertical);
-    }
-
-    private void setCentro(Tablero tablero){
-        Label etiqueta = new Label();
-        etiqueta.setText(" TAREAS ");
-        etiqueta.setFont(Font.font("courier new", FontWeight.SEMI_BOLD, 22));
-        etiqueta.setTextFill(Color.GREEN);
-        VBox contenedorVerticalDerecho = new VBox(etiqueta);
-        contenedorVerticalDerecho.setSpacing(1);
-        contenedorVerticalDerecho.setPadding(new Insets(15));
-        this.contenedorVerticalDerecho = contenedorVerticalDerecho;
-        this.setLeft(contenedorVerticalDerecho);
-        CheckBox chkOne, chkTwo, chkThree;
-        chkOne = new CheckBox("One");
-        this.contenedorVerticalDerecho.getChildren().add(chkOne);
-    }*/
 
 
     private void setEspacioParaAdministrarTareas(){
@@ -152,7 +101,6 @@ public class ContenedorPrincipal extends BorderPane {
 
         for (int i = 0; i < tablero.obtenerTareas().size() ; i++) {
 
-            // create a checkbox
             this.agregarTareas(tablero.obtenerTareas().get(i));
 
         }

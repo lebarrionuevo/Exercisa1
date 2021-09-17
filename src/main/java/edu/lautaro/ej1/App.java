@@ -3,7 +3,6 @@ package edu.lautaro.ej1;
 import edu.lautaro.ej1.modelo.Tablero;
 import edu.lautaro.ej1.vista.ContenedorBienvenida;
 import edu.lautaro.ej1.vista.ContenedorPrincipal;
-/*import edu.fiuba.algo3.vista.eventos.AplicacionOnKeyPressEventHandler;*/
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;

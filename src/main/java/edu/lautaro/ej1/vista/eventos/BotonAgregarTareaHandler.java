@@ -4,8 +4,6 @@ import edu.lautaro.ej1.modelo.Tablero;
 import edu.lautaro.ej1.vista.ContenedorPrincipal;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextInputDialog;
 
 import java.util.Optional;

@@ -27,7 +27,6 @@ public class BotonEditarTareasHandler implements EventHandler<ActionEvent> {
         choiceDialog.setHeaderText("Select the task to edit");
         choiceDialog.setContentText("Choose your task:");
 
-        // Traditional way to get the response value.
         Optional<String> resultado = choiceDialog.showAndWait();
         if (resultado.isPresent()) {
             String tareaAModificar;
