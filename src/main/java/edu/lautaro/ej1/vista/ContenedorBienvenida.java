@@ -31,7 +31,7 @@ public class ContenedorBienvenida extends VBox {
 
 
         Button botonEntrar = new Button();
-        botonEntrar.setText("Entrar");
+        botonEntrar.setText("Enter");
 
         Label etiqueta = new Label();
         etiqueta.setFont(Font.font("Tahoma", FontWeight.BOLD, 24));
